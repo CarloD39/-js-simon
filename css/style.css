@@ -1,0 +1,27 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 50px 50px;
+}
+
+.output-timer{
+    width: 300px;
+    background-color: rgb(250, 146, 18);
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.output-timer > h1{
+    align-items: center;
+}
+
+#same-numbers{
+    margin-top: 10px;
+    padding: 50px 50px;
+    border-radius: 10px;
+    font-size: 20px;
+    width: 300px;
+    background-color: coral;
+
+}

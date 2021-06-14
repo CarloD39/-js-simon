@@ -1,10 +1,11 @@
-// var boxNumbers = document.getElementsByClassName('numeri-randomici')[0];
 var numbersAllert = [];
 var userNumbers = [];
 var identicalNumbers =[];
 
+var maxNumberLenght = 5;
 
-while(numbersAllert.length < 5){
+
+while(numbersAllert.length < maxNumberLenght){
     var randoNumber = Math.floor(Math.random()*100);
     
     if(!numbersAllert.includes(randoNumber)){
@@ -15,44 +16,36 @@ while(numbersAllert.length < 5){
 
 
 
-var seconds = 5;
-var finalResult = document.getElementsByClassName('same-numbers')[0];
+var seconds =3;
+var finalResult = document.getElementById('same-numbers');
 
-setTimeout(function() {
+ var time = setTimeout(function() { //come far apparire il countdown a schermo?;
 
     while(userNumbers.length < 5) {
         var userNumber = parseInt(prompt('inserisci il numero che ricordi'));
         userNumbers.push(userNumber);
 
-        if(numbersAllert.includes(userNumber)) {
+        if(isNaN(userNumber)){
+            alert('questo non è un numero');
+            // come faccio ad inserire il numero corretto, perche cosi mi da solo quattro prompt;
+            var userNumber = parseInt(prompt('inserisci il numero che ricordi'));
+
+        } else if(numbersAllert.includes(userNumber)) {
             identicalNumbers.push(userNumber);
-        }
-    }
 
-    finalResult.innerHTML = 'Hai indovinato un totale di' + identicalNumber + 'numeri.' + ' ' + 'e sono:' + identicalNumbers;
+            finalResult.innerHTML = 'Hai indovinato un totale di' + identicalNumbers.length + 'numeri.' + ' ' + 'e sono:' + identicalNumbers;
 
-  
+        } else if(!numbersAllert.includes(userNumber)){
+
+            finalResult.innerHTML = 'Hai indovinato 0 numeri! La memoria non ti ha aiutato...';
+
+        }else if(numbersAllert.every(i => userNumber.includes(i))){ //come controllare che ogni elemento si apresente?;
+            finalResult.innerHTML = 'Bravo! Hai trova tutti e ' + identicalNumbers.length + 'i numeri' + '' + 'infatti son:' + identicalNumbers;
+        }          
+
+    }    
+
 },seconds * 1000);
 
 
-// var seconds = 30;
-// var outputCountdown2 = document.getElementsByClassName('output-timer')[0];
-
-// var clock = setInterval(function() {
-
-//     outputCountdown2.innerHTML = seconds;
-//     seconds--;
-
-//     while(userNumbers.length < 5) {
-//         var userNumber = parseInt(prompt('inserisci il numero che ricordi'));
-//         userNumbers.push(userNumber);
-
-//         if(numbersAllert.includes(userNumber)) {
-//             identicalNumbers.push(userNumber);
-//         }
-//     }
-
-//     alert('Hai indovinato un totale di' + identicalNumber + 'numeri.' + ' ' + 'e sono:' + identicalNumbers);
-  
-// },1000);
 
